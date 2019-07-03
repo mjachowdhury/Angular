@@ -20,6 +20,7 @@ export class AppComponent {
 
   showArtist(item) {
     this.query = item.name;
+    item.highlight = !item.highlight;
   }
 
   constructor(){
