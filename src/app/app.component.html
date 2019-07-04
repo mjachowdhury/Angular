@@ -19,19 +19,23 @@
       <div class="position-absolute container" style="left: 0; z-index:10">
           <div class="row justify-content-center">
             <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5">
-              <div class="list-group">
+              <div class="list-group" *ngIf="query"> <!--here ngIf ="query" that condition will make sure if query is exist-->
                 <a href="#" class="list-group-item list-group-item-action flex-column align-items-start"
                 *ngFor="let artist of (artists | searchArtists: query)"
-                (click)="showArtist(artist)"
+                (click)="showArtist(artist); 
+                query= ''"  
                 [style.backgroundColor]="artist.highlight ? '#EEE' : '#FFF'">
 
-                <app-artist-items [artist]="artist"></app-artist-items>
+                <app-artist-items [artist]="artist"></app-artist-items><!--connecting to the sub component for artist-->
                     
                 </a><!-- link -->
               </div><!-- list-group -->
             </div><!-- col -->
           </div><!-- row -->
         </div><!-- container -->
-</div> <!--position-->>
+
+        <app-artist-details *ngIf="currentArtist"
+                            [artist]="currentArtist"></app-artist-details>
+</div> <!--position-->
 
 
